@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	<context:annotation-config/>
+	<context:component-scan base-package="com.sonetel"/>
+	<mvc:annotation-driven/>
+	<mvc:default-servlet-handler />
+	
+	<bean id="CS"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<!-- property name="url" value="jdbc:oracle:thin:@192.168.2.152:1521:ORCL1" 
+			/> -->
+		<property name="url" value="jdbc:oracle:thin:@183.82.121.171:7004:XE" />
+		<property name="username" value="RDSNTL_CS" />
+		<property name="password" value="RDSNTL_CS" />
+	</bean>
+	<bean id="PORTAL"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<!-- <property name="url" value="jdbc:oracle:thin:@192.168.2.152:1521:ORCL1" 
+			/> -->
+		<property name="url" value="jdbc:oracle:thin:@183.82.121.171:7004:XE" />
+		<property name="username" value="RDSNTL_PORTAL" />
+		<property name="password" value="RDSNTL_PORTAL" />
+	</bean>
+	<bean id="authDao" class="com.sonetel.auth.dao.AuthenticationDAO">
+		<constructor-arg ref="CS" />
+	</bean>
+</beans>
