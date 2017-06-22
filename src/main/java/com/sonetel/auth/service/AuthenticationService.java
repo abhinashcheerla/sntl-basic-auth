@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sonetel.auth.beans.AuthResponse;
 import com.sonetel.auth.beans.UserProfile;
@@ -14,6 +15,7 @@ public class AuthenticationService {
 	@Autowired
 	private AuthenticationDAO authenticationDAO;
 	
+	@Transactional
 	public AuthResponse authenticateForUsageRecordsAccess(UserProfile userProfile, AuthResponse authResponse) {
 		UserProfile userDB = authenticationDAO.getUserByUserName(userProfile.getUsername());
 		

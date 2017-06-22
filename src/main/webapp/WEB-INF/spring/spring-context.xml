@@ -16,18 +16,14 @@
 	<bean id="CS"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<!-- property name="url" value="jdbc:oracle:thin:@192.168.2.152:1521:ORCL1" 
-			/> -->
-		<property name="url" value="jdbc:oracle:thin:@183.82.121.171:7004:XE" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.140:1521:XE" />
 		<property name="username" value="RDSNTL_CS" />
 		<property name="password" value="RDSNTL_CS" />
 	</bean>
 	<bean id="PORTAL"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<!-- <property name="url" value="jdbc:oracle:thin:@192.168.2.152:1521:ORCL1" 
-			/> -->
-		<property name="url" value="jdbc:oracle:thin:@183.82.121.171:7004:XE" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.2.140:1521:XE" />
 		<property name="username" value="RDSNTL_PORTAL" />
 		<property name="password" value="RDSNTL_PORTAL" />
 	</bean>
