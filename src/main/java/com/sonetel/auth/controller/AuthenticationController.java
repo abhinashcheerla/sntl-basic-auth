@@ -1,5 +1,6 @@
 package com.sonetel.auth.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,15 @@ import com.sonetel.auth.service.AuthenticationService;
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
+	private Logger logger = Logger.getLogger(this.getClass().toString());
+	
 	@Autowired
 	private AuthenticationService authentiationService;
 	
 	@RequestMapping(value="/usagerecord/basic", method=RequestMethod.POST, produces="application/json")
 	public Object authenticateUsageRecordsAccess(
 			@RequestBody UserProfile userProfile) {
+		logger.info("authenticateUsageRecordsAccess() [IN]");
 		AuthResponse response = new AuthResponse();
 		
 		if(userProfile == null) {
@@ -43,6 +47,7 @@ public class AuthenticationController {
 		}
 		
 		response = authentiationService.authenticateForUsageRecordsAccess(userProfile, response);
+		logger.info("authenticateUsageRecordsAccess() [OUT]");
 		return response;
 	}
 }
