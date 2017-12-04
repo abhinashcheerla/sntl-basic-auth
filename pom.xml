@@ -31,7 +31,7 @@
 				<version>3.0.0</version>
 				<configuration>
 					<warName>sntl-auth</warName>
-					<outputDirectory>/root/tomcat/apache-tomcat-7.0.78/webapps</outputDirectory>
+					<outputDirectory>/opt/tomcat/apache-tomcat-7.0.82/webapps</outputDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
