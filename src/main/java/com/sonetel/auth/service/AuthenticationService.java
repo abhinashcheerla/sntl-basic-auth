@@ -22,7 +22,7 @@ public class AuthenticationService {
 	public AuthResponse authenticateForUsageRecordsAccess(UserProfile userProfile, AuthResponse authResponse) {
 		logger.info("authenticateForUsageRecordsAccess() [IN]");
 		try {
-			UserProfile userDB = authenticationDAO.getUserByUserName(userProfile.getUsername());
+			UserProfile userDB = authenticationDAO.getUserByUserName(userProfile.getUsername(), userProfile.getPassword());
 			if(userDB == null) {
 				authResponse.setResponse(AuthResponse.RESPONSE.INVALID_USER);
 				authResponse.setDetails("User does not exist in the system");

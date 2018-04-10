@@ -24,7 +24,7 @@ public class AuthenticationDAO {
 		jdbcTemplate=new JdbcTemplate(dataSource);
 	}
 
-	public UserProfile getUserByUserName(String userName) throws Exception {
+	public UserProfile getUserByUserName(String userName, String password) throws Exception {
 		logger.info("getUserByUserName() [IN]");
 		logger.info("Loading User datails for User Name: "+userName);
 		StringBuffer strQuery = new StringBuffer();
@@ -33,7 +33,7 @@ public class AuthenticationDAO {
 		try {
 			strQuery.append("SELECT U.CUST_KEY AS USER_NAME, U.TOKEN AS PASSWORD, UR.ROLE_NAME AS ROLE");
 			strQuery.append(" FROM USER_AUTH U JOIN USER_ROLES UR ON U.ROLE_ID = UR.ROLE_ID");
-			strQuery.append(" WHERE U.CUST_KEY = '"+ userName+"'");
+			strQuery.append(" WHERE U.CUST_KEY = '"+ userName+"'and U.TOKEN='"+password+"'");
 			
 			resultList = jdbcTemplate.queryForList(strQuery.toString());
 			if(resultList == null || resultList.isEmpty()) {
